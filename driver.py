@@ -41,6 +41,25 @@ class RectangleList:
         temp = rect1
         rect1 = rect2
         rect2 = temp
+    
+    def cocktailSort(self):
+        while swapped:
+            swapped = False
+            for x in range(0, rect.count):
+                if rect.rectangles[x].height > rect.rectangles[x+1].height:
+                    rect.swap(rect.rectangles[x], rect.rectangles[x+1])
+                    swapped = True
+            
+            if not swapped:
+                break
+
+            swapped = False
+
+            for y in range(rect.count-1, 0):
+                if rect.rectangles[y].height > rect.rectangles[y+1].height:
+                    rect.swap(rect.rectangles[y], rect.rectangles[y+1])
+                    swapped = True
+
         
 
 
@@ -54,14 +73,16 @@ for x in range(0, rect.count):
     randHeight = random.randrange(10, rect.randomHeightMax)
     rect.rectangles.append(pygame.Rect(rect.size*(x+1), canvasSize[1]-randHeight,rect.size,randHeight))
 
-# This variable will be used in the sorting algorithm to visualize where the computer is currently acting in the algorithm.  
+# SORTING VARIABLES
 ghost = 0
+swapper = False
 
 while not exit: 
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT: 
             exit = True
     canvas.fill("#b3cde0")
+    
     
     for count in range(0, rect.count):
         currentRect = rect.rectangles[count]
@@ -75,6 +96,10 @@ while not exit:
             pygame.draw.rect(canvas, "#005b96", currentRect) # Draws blue2 on odd count rects
     ghost += 1 # Iterates the ghost to the next rect
     ghost %= rect.count # This bounds the "ghost" to repeat at the beginning of the list when it reaches the end
+    
+    rect.cocktailSort
+
+
         
 
     pygame.display.update() 
@@ -82,3 +107,30 @@ while not exit:
     
     # deltaTime in seconds.
     deltaTime = clock.tick(60) / 1000.0
+
+
+    """ https://en.wikipedia.org/wiki/Cocktail_shaker_sort 
+
+procedure cocktailShakerSort(A : list of sortable items) is
+    do
+        swapped := false
+        for each i in 0 to length(A) − 1 do:
+            if A[i] > A[i + 1] then // test whether the two elements are in the wrong order
+                swap(A[i], A[i + 1]) // let the two elements change places
+                swapped := true
+            end if
+        end for
+        if not swapped then
+            // we can exit the outer loop here if no swaps occurred.
+            break do-while loop
+        end if
+        swapped := false
+        for each i in length(A) − 1 to 0 do:
+            if A[i] > A[i + 1] then
+                swap(A[i], A[i + 1])
+                swapped := true
+            end if
+        end for
+    while swapped // if no elements have been swapped, then the list is sorted
+end procedure
+    """
