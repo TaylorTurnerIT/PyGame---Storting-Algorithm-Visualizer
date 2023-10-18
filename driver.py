@@ -36,6 +36,7 @@ class RectangleList:
     count = countMax # The number of rectangles, provided if you want less than the max
     randomHeightMin = 20 # The minimum height each rectangle can be. Technically this can cause problems if the window is smaller than 20 pixels, but that
     randomHeightMax = floor((canvasSize[1]-max(10, size))) # The maximum height based on the size of the window. This allows this program to run on any computer and still work
+    swapped = False
 
     def swap(self, rect1, rect2):
         temp = rect1
@@ -43,7 +44,9 @@ class RectangleList:
         rect2 = temp
     
     def cocktailSort(self):
+        swapped = True
         while swapped:
+            
             swapped = False
             for x in range(0, rect.count):
                 if rect.rectangles[x].height > rect.rectangles[x+1].height:
@@ -54,7 +57,6 @@ class RectangleList:
                 break
 
             swapped = False
-
             for y in range(rect.count-1, 0):
                 if rect.rectangles[y].height > rect.rectangles[y+1].height:
                     rect.swap(rect.rectangles[y], rect.rectangles[y+1])
@@ -65,7 +67,7 @@ class RectangleList:
 
 rect = RectangleList # Declare rect as the Rectangle object
 
-if rect.count > rect.countMax: # If the rectangle count is too high, this will overwrite it with the maximum. Doesn't do much for now, added for future use.
+if rect.count > rect.countMax: # If the rectangle count is too high, this will overwrite it with the maximum. Doesn't do much for now, added for future use. TODO: Add a slider or button to increase scale during runtime.
     rect.count = rect.count
 
 # Adds the rectangles to the rectangle[] list
@@ -75,7 +77,7 @@ for x in range(0, rect.count):
 
 # SORTING VARIABLES
 ghost = 0
-swapper = False
+swapped = False
 
 while not exit: 
     for event in pygame.event.get(): 
@@ -83,7 +85,7 @@ while not exit:
             exit = True
     canvas.fill("#b3cde0")
     
-    
+    rect.cocktailSort
     for count in range(0, rect.count):
         currentRect = rect.rectangles[count]
 
@@ -97,7 +99,7 @@ while not exit:
     ghost += 1 # Iterates the ghost to the next rect
     ghost %= rect.count # This bounds the "ghost" to repeat at the beginning of the list when it reaches the end
     
-    rect.cocktailSort
+    
 
 
         
