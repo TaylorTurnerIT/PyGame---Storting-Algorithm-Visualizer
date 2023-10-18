@@ -38,33 +38,15 @@ class RectangleList:
     randomHeightMax = floor((canvasSize[1]-max(10, size))) # The maximum height based on the size of the window. This allows this program to run on any computer and still work
     swapped = False
 
-    def swap(self, rect1, rect2):
-        temp = rect1
-        rect1 = rect2
-        rect2 = temp
-    
-    def cocktailSort(self):
-        swapped = True
-        while swapped:
-            
-            swapped = False
-            for x in range(0, rect.count):
-                if rect.rectangles[x].height > rect.rectangles[x+1].height:
-                    rect.swap(rect.rectangles[x], rect.rectangles[x+1])
-                    swapped = True
-            
-            if not swapped:
-                break
+    def swapHeight(arr, i, j):
+        # Swap the heights of two elements
+        temp = arr[i].height
+        arr[i].height = arr[j].height
+        arr[j].height = temp
 
-            swapped = False
-            for y in range(rect.count-1, 0):
-                if rect.rectangles[y].height > rect.rectangles[y+1].height:
-                    rect.swap(rect.rectangles[y], rect.rectangles[y+1])
-                    swapped = True
 
+        arr[i].move_ip(arr[j].height-arr[i].height, 0)
         
-
-
 rect = RectangleList # Declare rect as the Rectangle object
 
 if rect.count > rect.countMax: # If the rectangle count is too high, this will overwrite it with the maximum. Doesn't do much for now, added for future use. TODO: Add a slider or button to increase scale during runtime.
@@ -77,7 +59,8 @@ for x in range(0, rect.count):
 
 # SORTING VARIABLES
 ghost = 0
-swapped = False
+swapped = True
+
 
 while not exit: 
     for event in pygame.event.get(): 
@@ -85,7 +68,24 @@ while not exit:
             exit = True
     canvas.fill("#b3cde0")
     
-    rect.cocktailSort
+    # COCKTAIL SHAKER SORTING ALGORITHM
+    if swapped: # If swapped is true (indicating the previous iteration has caused a swap)
+        swapped = False
+        for x in range(0, rect.count - 1):
+            ghost = x
+            if rect.rectangles[x].height > rect.rectangles[x+1].height:
+                rect.swapHeight(rect.rectangles, x, x+1)
+                
+                swapped = True
+        if not swapped:
+            break
+        swapped = False
+        for y in range(rect.count - 1, 0):
+            ghost = y
+            if rect.rectangles[y].height > rect.rectangles[y+1].height:
+                rect.swapHeight(rect.rectangles, y, y+1)
+                swapped = True
+
     for count in range(0, rect.count):
         currentRect = rect.rectangles[count]
 
@@ -96,13 +96,10 @@ while not exit:
             pygame.draw.rect(canvas, "#011f4b", currentRect) # Draws blue1 on even count rects
         else:
             pygame.draw.rect(canvas, "#005b96", currentRect) # Draws blue2 on odd count rects
-    ghost += 1 # Iterates the ghost to the next rect
-    ghost %= rect.count # This bounds the "ghost" to repeat at the beginning of the list when it reaches the end
-    
-    
+    #ghost += 1 # Iterates the ghost to the next rect
+    #ghost %= rect.count # This bounds the "ghost" to repeat at the beginning of the list when it reaches the end
 
-
-        
+    
 
     pygame.display.update() 
     
