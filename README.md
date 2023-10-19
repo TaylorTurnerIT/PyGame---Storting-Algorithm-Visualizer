@@ -16,7 +16,7 @@ The magic happens in a Pygame window where you'll see a bunch of rectangles of d
 
 ### Prerequisites
 
-You'll need Python installed on your machine to run this project. If you don't have Python installed, you can download it [here](https://www.python.org/downloads/).
+You'll need Python installed on your machine to run this project.
 
 ### Libraries
 
