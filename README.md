@@ -27,14 +27,6 @@ To install and run this program, follow these steps:
     Install Pygame using the provided command.
     Run the Python script to launch the visualizer.
 
-# Usage
-
-Upon executing the program, a Pygame window will open displaying a set of rectangles with varying heights. As the program runs, these rectangles will be sorted using the Cocktail Shaker algorithm, visually demonstrating how the algorithm operates.
-
-    Start: Launch the visualizer to begin sorting
-    Pause/Resume: Control the visualization process
-    Exit: Close the visualizer
-
 # Credits
 
 This program was created by Taylor Turner.
