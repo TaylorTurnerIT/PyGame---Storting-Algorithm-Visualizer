@@ -1,50 +1,40 @@
-# Sorting Algorithm Visualizer
+# Cocktail Shaker Sort Visualizer
 
-Hey, I'm Taylor Turner! This project was my first dive into Python coming from C++. It is a simple program that uses pygame's GUI system to create a visualization of the cocktail shaker sort algorithm.
+This project was an exploration into Python, transitioning from C++. The goal was to utilize Pygame's GUI system to visualize the cocktail shaker sort algorithm. This program is a standalone project, aimed at providing a visual understanding of how the cocktail shaker sort algorithm operates.
 
-## How it Works
+# Purpose
 
-The magic happens in a Pygame window where you'll see a bunch of rectangles of different heights. As you run the program, these rectangles will get sorted right before your eyes using the Cocktail Shaker algorithm.
+The purpose of this program was to delve into the following areas:
 
-### Key Features
+    Graphical User Interface (GUI) creation using Pygame
+    Algorithm visualization
+    Real-time data manipulation and rendering
+    Enhancing algorithm comprehension through visual representation
 
-- **Dynamic Canvas Size**: No matter what screen you're on, the canvas adapts to be half of your current screen resolution.
-- **Randomized Rectangle Heights**: Each rectangle has a unique, randomly-generated height, bounded by the canvas dimensions.
-- **Real-Time Visualization**: You get to see how the sorting algorithm sorts the rectangles in real time.
+# Features
 
-## Setup
+    Dynamic adjustment of canvas size
+    Randomized rectangle heights representing data elements
+    Real-time visualization of the sorting process
+    Interactive user interface to control the visualization
 
-### Prerequisites
+# Installation
 
-You'll need Python installed on your machine to run this project. If you don't have Python installed, you can download it [here](https://www.python.org/downloads/).
+To install and run this program, follow these steps:
 
-### Libraries
+    Clone this repository to your local machine.
+    Navigate to the root directory of the project in your terminal.
+    Install Pygame using the provided command.
+    Run the Python script to launch the visualizer.
 
-- [Pygame](https://www.pygame.org/download.shtml)
+# Usage
 
-To install Pygame, run the following command:
+Upon executing the program, a Pygame window will open displaying a set of rectangles with varying heights. As the program runs, these rectangles will be sorted using the Cocktail Shaker algorithm, visually demonstrating how the algorithm operates.
 
-```bash
-pip install pygame
-```
+    Start: Launch the visualizer to begin sorting
+    Pause/Resume: Control the visualization process
+    Exit: Close the visualizer
 
-### Installation
+# Credits
 
-1. **Clone the Repository**: Download the code onto your local machine.
-
-    ```bash
-    git clone https://github.com/your-github-username/Sorting-Algorithm-Visualizer.git
-    ```
-
-2. **Navigate and Run**: Navigate to the cloned repository's folder and simply run the Python script to see the sorting in action.
-
-## Contributing
-
-If you've got some ideas for improvement or just found a bug, feel free to fork this project and submit your pull requests. If it's something big, let's talk about it first. Open up an issue and let's discuss how to make this project even better.
-
-## License
-
-This project is freely available for free under the MIT License. 
-
-Cheers,
-Taylor
+This program was created by Taylor Turner.
