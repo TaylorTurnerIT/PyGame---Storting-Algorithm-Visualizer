@@ -35,15 +35,17 @@ swapped = True
 # RECTANGLE OBJECT DECLARATION
 class RectangleList:
     rectangles = [] # List of rectangle objects
-    size = 20 # The number of pixels wide the rectangles will be when displayed
-    countMax = floor((canvasSize[0]-(size*2))/size) # Takes the size of the window, add a buffer of 40 to leave a blank space at the first and last rectangle slot
-    count = countMax # The number of rectangles, provided if you want less than the max
-    randomHeightMin = 20 # The minimum height each rectangle can be. Technically this can cause problems if the window is smaller than 20 pixels, but that
-    randomHeightMax = floor((canvasSize[1]-max(10, size))) # The maximum height based on the size of the window. This allows this program to run on any computer and still work
-    swapped = False
-    stepTime = 250 # Time between each step in miliseconds
+    
 
     def __init__(self):
+
+        self.size = 20 # The number of pixels wide the rectangles will be when displayed
+        self.countMax = floor((canvasSize[0]-(self.size*2))/self.size) # Takes the size of the window, add a buffer of 40 to leave a blank space at the first and last rectangle slot
+        self.count = self.countMax # The number of rectangles, provided if you want less than the max
+        self.randomHeightMin = 20 # The minimum height each rectangle can be. Technically this can cause problems if the window is smaller than 20 pixels, but that
+        self.randomHeightMax = floor((canvasSize[1]-max(10, self.size))) # The maximum height based on the size of the window. This allows this program to run on any computer and still work
+        self.swapped = False
+        self.stepTime = 250 # Time between each step in miliseconds
         pygame.time.set_timer(pygame.USEREVENT, self.stepTime) # Sends the userevent to trigger sorting every self.stepTime miliseconds
         if self.count > self.countMax: # If the rectangle count is too high, this will overwrite it with the maximum. Doesn't do much for now, added for future use. TODO: Add a slider or button to increase scale during runtime.
             self.count = self.count
@@ -68,9 +70,9 @@ class RectangleList:
         for count in range(0, self.count):
             currentRect = self.rectangles[count]
 
-            if count == ghost:
-                pygame.draw.rect(canvas, "#851e3e", currentRect) # Draws red
-                continue
+            # if count == ghost:
+            #     pygame.draw.rect(canvas, "#851e3e", currentRect) # Draws red
+            #     continue
             if count % 2 == 0:
                 pygame.draw.rect(canvas, "#011f4b", currentRect) # Draws blue1 on even count rects
             else:
