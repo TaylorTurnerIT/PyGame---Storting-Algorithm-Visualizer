@@ -29,4 +29,4 @@ To install and run this program, follow these steps:
 
 # Credits
 
-This program was created by Taylor Turner.
+This program was created by Taylor Turner with special thanks to the Pygame team.
