@@ -1,6 +1,6 @@
 # Cocktail Shaker Sort Visualizer
 
-Hey, I'm Taylor Turner! This project was my first dive into Python coming from C++. It is a simple program that uses pygame's GUI system to create a visualization of the cocktail shaker sort algorithm.
+This project was my first dive into Python coming from C++. It is a simple program that uses pygame's GUI system to create a visualization of the cocktail shaker sort algorithm.
 
 ## How it Works
 
